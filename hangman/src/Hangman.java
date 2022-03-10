@@ -16,35 +16,7 @@ public class Hangman
 		System.out.println("Give me a word: ");
 		String userWord = scan.nextLine();
 		System.out.println("\n\n");
-		System.out.println("           +-----------------<====        \n"
-				+		   "           |                  |  |        \n"
-				+		   "        0000000               |  |        \n"
-				+ 		   "      00       00             |  |        \n"
-				+ 		   "     0           0            |  |        \n"
-				+ 		   "     0           0            |  |        \n"
-				+ 		   "     0           0            |  |        \n"
-				+ 		   "      00       00             |  |        \n"
-				+ 		   "        0000000               |  |        \n"
-				+ 		   "           |                  |  |        \n"
-				+ 		   "           |                  |  |        \n"
-				+ 		   "           |                  |  |        \n"
-				+ 		   "          /|\\                 |  |        \n"
-				+ 		   "         / | \\                |  |        \n"
-				+ 		   "        /  |  \\               |  |        \n"
-				+ 		   "       /   |   \\              |  |        \n"
-				+ 		   "      /    |    \\             |  |        \n"
-				+ 		   "           |                  |  |        \n"
-				+ 		   "           |                  |  |        \n"
-				+ 		   "           |                  |  |        \n"
-				+ 		   "           |                  |  |        \n"
-				+ 		   "          / \\                 |  |        \n"
-				+ 		   "         /   \\                |  |        \n"
-				+ 		   "        /     \\              /    \\      \n"
-				+ 		   "       /       \\            /      \\     \n"
-				+ 		   "      /         \\    ******************   \n"
-				+ 		   "                    ********************   \n"
-				+ 		   "                   **********************  \n"
-				+ 		   "                  ************************\n");
+		System.out.println("   +----- \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n     *****\n    ******\n");
 		
 		String[] word = new String[userWord.length()];
 		for(int i = 0; i < word.length; i++)
@@ -64,6 +36,5 @@ public class Hangman
 		
 		System.out.println("\nGuess a letter: ");
 		String userLetter = scan.next();
-//		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 }
