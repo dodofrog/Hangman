@@ -13,28 +13,37 @@ public class Hangman
 				+ 		   "HHHHH    HHHHH  AAA    AAA  NNNN     NNNN  GGGGGGGGGGG  MMMM     MMMM  AAA    AAA  NNNN     NNNN\n"
 				+ 		   "HHHHH    HHHHH  AAA    AAA  NNNN     NNNN  GGGGGGGGGGG  MMMM     MMMM  AAA    AAA  NNNN     NNNN\n");
 		System.out.println("\nThe Rules are Simple: \n- Guess the word letter by letter\n- If you get a letter wrong, the man loses a body part\n- You lose when there are no body parts left\n");
-		System.out.println("Give me a word: ");
-		String userWord = scan.nextLine();
-		System.out.println("\n\n");
-		System.out.println("   +----- \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n     *****\n    ******\n");
-		
-		String[] word = new String[userWord.length()];
-		for(int i = 0; i < word.length; i++)
+		System.out.println("Would you like to choose a word? (y/n)");
+		String yorn = scan.nextLine();
+		yorn.toUpperCase();
+		if(yorn.equals("y"))
 		{
-			word[i] = userWord.substring(i,i);
+			System.out.println("Give me a word: ");
+			String userWord = scan.nextLine();
+			String[] word = new String[userWord.length()];
+			for(int i = 0; i < word.length; i++)
+			{
+				word[i] = userWord.substring(i,i);
+			}
+			String[] guess = new String[word.length];
+			for(int i = 0; i < guess.length; i++)
+			{
+				guess[i] = "_ ";
+			}
+			System.out.print("\nWord: ");
+			for(String character: guess)
+			{
+				System.out.print(character);
+			}
+			
+			System.out.println("\nGuess a letter: ");
+			String userLetter = scan.next();
 		}
-		String[] guess = new String[word.length];
-		for(int i = 0; i < guess.length; i++)
+		else if(yorn.equals("n"))
 		{
-			guess[i] = "_ ";
+			String[] countries = {"United States", "Canada", "Mexico", "Brazil", "Colombia", "Argentina", "Ukraine", "Russia", "United Kingdom", "France", "Spain", "Switzerland", "Germany", "Italy", "Greece", "Poland", "Sweden", "Ireland", "India", "China", "Taiwan", ""}
 		}
-		System.out.print("\nWord: ");
-		for(String character: guess)
-		{
-			System.out.print(character);
-		}
-		
-		System.out.println("\nGuess a letter: ");
-		String userLetter = scan.next();
+		// System.out.println("\n\n");
+		// System.out.println("   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n     *****\n    ******\n");
 	}
 }
