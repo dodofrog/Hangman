@@ -73,4 +73,40 @@ public class Hangman
             result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n     *****\n    ******\n";
         return result;
     }
+
+    // plays the game
+    public void playGame()
+    {
+        Scanner scan = new Scanner(System.in);
+        Scanner numScan = new Scanner(System.in);
+        boolean rightAnswer = false, rightNumAnswer = false;
+        while (!rightAnswer)
+        {
+            System.out.println("Would you like to choose your own word? (y/n): ");
+            String userChoice = scan.nextLine();
+            userChoice.toLowerCase();
+            if (userChoice.equals("y"))
+            {
+                rightAnswer = true;
+                System.out.println("What is your word? ");
+                String userWord = scan.nextLine();
+                findWord(userWord);
+            }
+            else if(userChoice.equals("n"))
+            {
+                while(!rightNumAnswer)
+                {
+                    rightAnswer = true;
+                    System.out.println("Would you like a word about fruits(1), countries(2), sports(3), or random chosen(4)? ");
+                    int userNum = numScan.nextInt();
+                    userNum--;
+                    if (userNum < 0 || userNum > 3)
+                        break;
+                    else
+                        
+                }
+            }
+        }
+        
+    }
 }
