@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Hangman
+public class H
 {
 	public static void main(String[] args)
 	{
@@ -12,7 +12,7 @@ public class Hangman
 				+ 		   "HHHHH    HHHHH  AAA    AAA  NNNN    NNNNN  GGG      GG  MMMM     MMMM  AAA    AAA  NNNN    NNNNN\n"
 				+ 		   "HHHHH    HHHHH  AAA    AAA  NNNN     NNNN  GGGGGGGGGGG  MMMM     MMMM  AAA    AAA  NNNN     NNNN\n"
 				+ 		   "HHHHH    HHHHH  AAA    AAA  NNNN     NNNN  GGGGGGGGGGG  MMMM     MMMM  AAA    AAA  NNNN     NNNN\n");
-		System.out.println("\nThe Rules are Simple: \n- Guess the word letter by letter\n- If you get a letter wrong, the man loses a body part\n- You lose when there are no body parts left\n");
+		System.out.println("\nThe Rules are Simple: \n- Guess the word letter by letter\n- If you get a letter wrong, the man gains a limb\n- You lose when the man is fully hung\n");
 		System.out.println("Would you like to choose a word? (y/n)");
 		String yorn = scan.nextLine();
 		yorn.toUpperCase();
@@ -41,7 +41,8 @@ public class Hangman
 		}
 		else if(yorn.equals("n"))
 		{
-			String[] countries = {"United States", "Canada", "Mexico", "Brazil", "Colombia", "Argentina", "Ukraine", "Russia", "United Kingdom", "France", "Spain", "Switzerland", "Germany", "Italy", "Greece", "Poland", "Sweden", "Ireland", "India", "China", "Taiwan", ""};
+			String[] food = {};
+			String[] countries = {"United States", "Canada", "Mexico", "Brazil", "Colombia", "Argentina", "Ukraine", "Russia", "United Kingdom", "France", "Spain", "Switzerland", "Germany", "Italy", "Greece", "Poland", "Sweden", "Ireland", "India", "China", "Taiwan", "Japan", "Rwanda", ""};
 		}
 		// System.out.println("\n\n");
 		// System.out.println("   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n     *****\n    ******\n");
