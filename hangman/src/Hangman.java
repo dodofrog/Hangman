@@ -11,7 +11,17 @@ public class Hangman
     private String[] sports = {"Tennis", "Soccer", "Football", "Badminton", "Rugby", "volleyball", "Tchoukball", "Wrestling", "Chess", "Cricket", "Basketball", "Baseball", "Ultimate Frisbee"};
     private int life = 6;
 
-    // No Constructor
+    // Constructors
+    public Hangman(int answer)
+    {
+        findWord(answer);
+    }
+
+    // Another constructor
+    public Hangman(String userWord)
+    {
+        findWord(userWord);
+    }
     
     // Determines what the word will be based on premade lists
     private void findWord(int answer)
@@ -64,9 +74,6 @@ public class Hangman
         return result;
     }
 
-    // a method for the user to guess a word
-    public boolean guessWord()
-
     // plays the game
     public void playGame()
     {
@@ -116,12 +123,5 @@ public class Hangman
                 System.out.println("Invalid Input");
             }
         }
-
-        for(int i = word.length() - 1; i >= 0; i--)
-        {
-            System.out.print("_ ");
-        }    
-        
-
     }
 }
