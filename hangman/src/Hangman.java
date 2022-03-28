@@ -46,6 +46,7 @@ public class Hangman
     // Determines what the word will be based on user input
     private void findWord(String userWord)
     {
+        userWord.toLowerCase();
         word = userWord;
     }
 
@@ -53,6 +54,30 @@ public class Hangman
     public void takeLife()
     {
         life--;
+    }
+
+    // Guess a word
+    public boolean guessWord(String wordGuess)
+    {
+        boolean didGuess = false;
+        wordGuess.toLowerCase();
+        if (wordGuess.equals(word))
+            didGuess = true;
+        else
+            return didGuess;
+        return didGuess;
+    }
+
+    // Guess a letter
+    public boolean guessLetter(String letter)
+    {
+        boolean didGuess = false;
+        letter.toLowerCase();
+        if (word.indexOf(letter) != -1)
+            didGuess = true;
+        else
+            return didGuess;
+        return didGuess;
     }
 
     // the toString method - Prints the man based on the lives left
@@ -72,56 +97,5 @@ public class Hangman
         else if(life == 0)
             result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n     *****\n    ******\n";
         return result;
-    }
-
-    // plays the game
-    public void playGame()
-    {
-        Scanner scan = new Scanner(System.in);
-        Scanner numScan = new Scanner(System.in);
-        while (true)
-        {
-            System.out.println("Would you like to choose your own word? (y/n): ");
-            String userChoice = scan.nextLine();
-            userChoice.toLowerCase();
-            if (userChoice.equals("y"))
-            {
-                System.out.println("What is your word? ");
-                String userWord = scan.nextLine();
-                findWord(userWord);
-                break;
-            }
-            else if(userChoice.equals("n"))
-            {
-                while(true)
-                {
-                    System.out.println("Would you like a word about fruits(1), countries(2), sports(3), or random chosen(4)? ");
-                    int userNum = numScan.nextInt();
-                    userNum--;
-                    if (userNum < 0 || userNum > 3)
-                    {
-                        System.out.println("Invalid Input");
-                    }
-                    else
-                    {
-                        if(userNum == 3)
-                        {
-                            int rand = (int)Math.random() * 3;
-                            findWord(rand);
-                        }
-                        else
-                        {
-                            findWord(userNum);
-                        }
-                        break;
-                    }
-                    break;
-                }
-            }
-            else
-            {
-                System.out.println("Invalid Input");
-            }
-        }
     }
 }

@@ -11,6 +11,12 @@ public class HangmanGame
     // Constructor
     public HangmanGame()
     {
+        resetWord();
+    }
+
+    // Resets the word
+    public void resetWord()
+    {
         Scanner scan = new Scanner(System.in);
         Scanner numScan = new Scanner(System.in);
         boolean firstScan = false, secondScan = false;
@@ -58,5 +64,14 @@ public class HangmanGame
                 System.out.println("Invalid Input");
             }
         }
+    }
+
+    // plays the game
+    public boolean playGame()
+    {
+        
+        
+    boolean didWin = false;
+        return didWin;
     }
 }
