@@ -14,6 +14,10 @@ public class HangmanGame
         resetWord();
     }
 
+    /**
+     * ----------------------------METHODS-----------------------------------------------
+     */
+    
     // Resets the word
     public void resetWord()
     {
@@ -36,7 +40,7 @@ public class HangmanGame
             {
                 while(secondScan == false)
                 {
-                    System.out.println("Would you like a word about fruits(1), countries(2), sports(3), or random chosen(4)? ");
+                    System.out.println("Would you like a word about fruits(1), countries(2), sports(3), or randomly chosen(4)? ");
                     int userNum = numScan.nextInt();
                     userNum--;
                     if (userNum < 0 || userNum > 3)
@@ -68,10 +72,22 @@ public class HangmanGame
 
     // plays the game
     public boolean playGame()
-    {
-        
-        
-    boolean didWin = false;
+    {      
+        Scanner scan = new Scanner(System.in);
+        boolean didWin = false;
+
+        for(int i = player.getWord().length(); i > 0; i--)
+            System.out.println("_ ");
+
+        System.out.println("\nGuess a word or a letter: ");
+        String guess = scan.nextLine();
+        if (guess.indexOf(1) == -1)
+        {
+            if(player.guessLetter(guess))
+            {
+                System.out.println("" + guess + " is in the word");
+            }
+        }
         return didWin;
     }
 }

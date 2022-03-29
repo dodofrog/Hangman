@@ -23,6 +23,10 @@ public class Hangman
         findWord(userWord);
     }
     
+    /**
+     * ---------------------------------------METHODS---------------------------------------------
+     */
+
     // Determines what the word will be based on premade lists
     private void findWord(int answer)
     {
@@ -78,6 +82,12 @@ public class Hangman
         else
             return didGuess;
         return didGuess;
+    }
+
+    // Returns the word
+    public String getWord()
+    {
+        return word;
     }
 
     // the toString method - Prints the man based on the lives left
