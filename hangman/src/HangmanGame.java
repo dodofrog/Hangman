@@ -76,10 +76,16 @@ public class HangmanGame
         Scanner scan = new Scanner(System.in);
         boolean didWin = false;
 
+        System.out.println("   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n    ******\n   ********");
         for(int i = player.getWord().length(); i > 0; i--)
-            System.out.println("_ ");
+        {
+            if(player.getWord().charAt(i - 1) == ' ')    
+                System.out.print("   ");
+            else
+                System.out.print("_ ");
+        }
 
-        System.out.println("\nGuess a word or a letter: ");
+        System.out.println("\n\nGuess a word or a letter: ");
         String guess = scan.nextLine();
         if (guess.indexOf(1) == -1)
         {
