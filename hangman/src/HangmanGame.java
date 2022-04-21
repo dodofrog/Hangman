@@ -2,6 +2,7 @@
 // A.Garg
 // March 2022
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class HangmanGame
 {
@@ -15,7 +16,7 @@ public class HangmanGame
     }
 
     /**
-     * ----------------------------METHODS-----------------------------------------------
+     * ----------------------------METHODS-------------------------------
      */
     
     // Resets the word
@@ -74,7 +75,9 @@ public class HangmanGame
     public boolean playGame()
     {      
         Scanner scan = new Scanner(System.in);
-        boolean didWin = false;
+        boolean gameDone = false, didWin = false;
+        ArrayList<Character> uniqueChar = new ArrayList<Character>();
+        ArrayList<Character> guessedChar = new ArrayList<Character>();
 
         System.out.println("   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n    ******\n   ********");
         for(int i = player.getWord().length(); i > 0; i--)
@@ -82,16 +85,58 @@ public class HangmanGame
             if(player.getWord().charAt(i - 1) == ' ')    
                 System.out.print("   ");
             else
-                System.out.print("_ ");
-        }
-
-        System.out.println("\n\nGuess a word or a letter: ");
-        String guess = scan.nextLine();
-        if (guess.indexOf(1) == -1)
-        {
-            if(player.guessLetter(guess))
             {
-                System.out.println("" + guess + " is in the word");
+                System.out.print("_ ");
+                uniqueChar.add(player.getWord().charAt(i - 1));
+            }  
+        }
+        int size = uniqueChar.size();
+
+        while(gameDone == false)
+        {
+            System.out.println("\n\nGuess a word or a letter: ");
+            String guess = scan.nextLine();
+            if (guess.indexOf(guess.charAt(1)) == -1)
+            {
+                char charGuess = guess.charAt(0);
+                if(player.guessLetter(guess))
+                {
+                    System.out.println("" + guess + " is in the word");
+                    guessedChar.add(charGuess);
+                }
+                else
+                    System.out.println("" + guess + " is not in the word");
+            }
+            else
+            {
+                if(player.guessWord(guess))
+                {
+                    System.out.println("" + guess + " is the word, you won");
+                }
+                else
+                    System.out.println("" + guess + " is not the word");
+                didWin = true;
+                gameDone = true;
+            }
+
+            System.out.println("   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n    ******\n   ********");
+            for(int i = player.getWord().length(); i > 0; i--)
+            {
+                if(player.getWord().charAt(i - 1) == ' ')    
+                    System.out.print("   ");
+                else if(guessedChar.contains(player.getWord().charAt(i - 1)))
+                    System.out.print(player.getWord().charAt(i - 1));
+                else
+                {
+                    System.out.print("_ ");
+                    uniqueChar.add(player.getWord().charAt(i - 1));
+                }  
+            }
+
+            for(int i = uniqueChar.size() - 1; i >= 0; i--)
+            {
+                if(guessedChar.contains(uniqueChar.get(i)))
+
             }
         }
         return didWin;
