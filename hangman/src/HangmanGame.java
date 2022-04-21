@@ -76,6 +76,7 @@ public class HangmanGame
     {      
         Scanner scan = new Scanner(System.in);
         boolean gameDone = false, didWin = false;
+        int g = 0;
         ArrayList<Character> uniqueChar = new ArrayList<Character>();
         ArrayList<Character> guessedChar = new ArrayList<Character>();
 
@@ -136,7 +137,13 @@ public class HangmanGame
             for(int i = uniqueChar.size() - 1; i >= 0; i--)
             {
                 if(guessedChar.contains(uniqueChar.get(i)))
+                    g++;
+            }
 
+            if(g == uniqueChar.size())
+            {
+                didWin = true;
+                gameDone = true;
             }
         }
         return didWin;
