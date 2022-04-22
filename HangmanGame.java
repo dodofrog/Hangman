@@ -76,11 +76,10 @@ public class HangmanGame
     {      
         Scanner scan = new Scanner(System.in);
         boolean gameDone = false, didWin = false;
-        int g = 0;
         ArrayList<Character> uniqueChar = new ArrayList<Character>();
         ArrayList<Character> guessedChar = new ArrayList<Character>();
 
-        System.out.println("   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n    ******\n   ********");
+        System.out.println(player);
         for(int i = player.getWord().length(); i > 0; i--)
         {
             if(player.getWord().charAt(i - 1) == ' ')    
@@ -106,7 +105,10 @@ public class HangmanGame
                     guessedChar.add(charGuess);
                 }
                 else
+                {
                     System.out.println("" + guess + " is not in the word");
+                    player.takeLife();
+                }    
             }
             else
             {
@@ -115,34 +117,37 @@ public class HangmanGame
                     System.out.println("" + guess + " is the word, you won");
                 }
                 else
+                {
                     System.out.println("" + guess + " is not the word");
+                    player.takeLife();
+                }    
                 didWin = true;
                 gameDone = true;
             }
 
-            System.out.println("   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n    ******\n   ********");
-            for(int i = player.getWord().length(); i > 0; i--)
+            System.out.println(player);
+            for(int i = 0; i < player.getWord().length(); i++)
             {
-                if(player.getWord().charAt(i - 1) == ' ')    
+                if(player.getWord().charAt(i) == ' ')    
                     System.out.print("   ");
-                else if(guessedChar.contains(player.getWord().charAt(i - 1)))
-                    System.out.print(player.getWord().charAt(i - 1));
+                else if(guessedChar.contains(player.getWord().charAt(i)))
+                    System.out.print(player.getWord().charAt(i));
                 else
                 {
                     System.out.print("_ ");
-                    uniqueChar.add(player.getWord().charAt(i - 1));
+                    uniqueChar.add(player.getWord().charAt(i));
                 }  
             }
 
-            for(int i = uniqueChar.size() - 1; i >= 0; i--)
-            {
-                if(guessedChar.contains(uniqueChar.get(i)))
-                    g++;
-            }
-
-            if(g == uniqueChar.size())
+            if(player.hasGuessedWord(guessedChar))
             {
                 didWin = true;
+                gameDone = true;
+            }
+
+            if(player.getLife() == 0)
+            {
+                didWin = false;
                 gameDone = true;
             }
         }

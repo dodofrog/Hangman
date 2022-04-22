@@ -2,6 +2,7 @@
 // Akshit Garg
 // March 2022
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Hangman
 {
@@ -58,6 +59,29 @@ public class Hangman
     public void takeLife()
     {
         life--;
+    }
+
+    // Returns the lives of the player
+    public int getLife()
+    {
+        return life;
+    }
+
+    // Sees if the full word has been guessed
+    public boolean hasGuessedWord(ArrayList<Character> guess)
+    {
+        boolean didGuess = false;
+        for(int i = 0; i < word.length(); i++)
+        {
+            if(guess.contains(word.charAt(i)))
+                didGuess = true;
+            else
+            {
+                didGuess = false;
+                i = word.length();
+            }
+        }
+        return didGuess;
     }
 
     // Guess a word
