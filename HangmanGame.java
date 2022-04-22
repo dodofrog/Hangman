@@ -97,7 +97,7 @@ public class HangmanGame
         {
             System.out.println("\n\nGuess a word or a letter: ");
             String guess = scan.nextLine();
-            if (guess.indexOf(guess.charAt(1)) == -1)
+            if (guess.length() == 1)
             {
                 char charGuess = guess.charAt(0);
                 if(player.guessLetter(guess))
