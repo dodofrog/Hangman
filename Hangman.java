@@ -1,13 +1,12 @@
 // Hangman.java - the class for the hangman game
 // Akshit Garg
 // March 2022
-import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Hangman
 {
     private String word;
-    private String[] fruits = {"apple", "banana", "pepper", "tomato", "Lychee", "Dragonfruit", "Pear", "Orange", "Lemon", "Lime", "Avacado", "Pumpkin", "Watermelon", "Cucumber", "Peaches", "Apricots", "Strawberry", "Lingonberry", "Blackberry", "Blueberry", "Raspberries", "Grapes", "Cranberries"};
+    private String[] fruits = {"apple", "banana", "pepper", "tomato", "lychee", "dragonfruit", "pear", "orange", "lemon", "lime", "avocado", "pumpkin", "watermelon", "cucumber", "peaches", "apricots", "strawberry", "lingonberry", "blackberry", "blueberry", "raspberries", "grapes", "cranberries"};
     private String[] countries = {"United States", "Canada", "Mexico", "Brazil", "Colombia", "Argentina", "Ukraine", "Russia", "United Kingdom", "France", "Spain", "Switzerland", "Germany", "Italy", "Greece", "Poland", "Sweden", "Ireland", "India", "China", "Taiwan", "Japan", "Rwanda", "Pakistan"};
     private String[] sports = {"Tennis", "Soccer", "Football", "Badminton", "Rugby", "volleyball", "Tchoukball", "Wrestling", "Chess", "Cricket", "Basketball", "Baseball", "Ultimate Frisbee"};
     private int life = 6;
@@ -34,7 +33,6 @@ public class Hangman
         if(answer == 0)
         {
             int rand = (int) (Math.random() * fruits.length);
-            System.out.println(rand);
             word = fruits[rand];
         }
         else if(answer == 1)
@@ -90,7 +88,7 @@ public class Hangman
     {
         boolean didGuess = false;
         wordGuess.toLowerCase();
-        if (wordGuess.equals(word))
+        if (wordGuess.equals(word.toLowerCase()))
             didGuess = true;
         else
             return didGuess;
@@ -124,8 +122,10 @@ public class Hangman
         else if(life == 5)
             result = "   +----+ \n   |    | \n   0    | \n        | \n        | \n        | \n        | \n     *****\n    ******\n";
         else if(life == 4)
-            result = "   +----+ \n   |    | \n   0    | \n  /|    | \n        | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n   |    | \n   |    | \n        | \n        | \n     *****\n    ******\n";
         else if(life == 3)
+            result = "   +----+ \n   |    | \n   0    | \n  /|    | \n        | \n        | \n        | \n     *****\n    ******\n";
+        else if(life == 2)
             result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n        | \n        | \n        | \n     *****\n    ******\n";
         else if(life == 1)
             result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  /     | \n        | \n     *****\n    ******\n";
