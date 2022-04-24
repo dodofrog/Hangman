@@ -143,7 +143,7 @@ public class HangmanGame
 
             if(player.hasGuessedWord(guessedChar))
             {
-                System.out.println("\nYOU WON!!");
+                System.out.println("\nYOU WON!!\n\nLives Left: " + player.getLife());
                 didWin = true;
                 gameDone = true;
             }
