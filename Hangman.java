@@ -33,17 +33,18 @@ public class Hangman
     {
         if(answer == 0)
         {
-            int rand = (int) Math.random() * fruits.length;
+            int rand = (int) (Math.random() * fruits.length);
+            System.out.println(rand);
             word = fruits[rand];
         }
         else if(answer == 1)
         {
-            int rand = (int) Math.random() * countries.length;
+            int rand = (int) (Math.random() * countries.length);
             word = countries[rand];
         }
         else if(answer == 2)
         {
-            int rand = (int) Math.random() * sports.length;
+            int rand = (int) (Math.random() * sports.length);
             word = sports[rand];
         }
     }
@@ -121,11 +122,11 @@ public class Hangman
         if (life == 6)
             result = "   +----+ \n   |    | \n        | \n        | \n        | \n        | \n        | \n     *****\n    ******\n";
         else if(life == 5)
-            result = "   +----+ \n   |    | \n   0    | \n   |    | \n   |    | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n        | \n        | \n        | \n        | \n     *****\n    ******\n";
         else if(life == 4)
-            result = "   +----+ \n   |    | \n   0    | \n  /|    | \n   |    | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n  /|    | \n        | \n        | \n        | \n     *****\n    ******\n";
         else if(life == 3)
-            result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n        | \n        | \n        | \n     *****\n    ******\n";
         else if(life == 1)
             result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  /     | \n        | \n     *****\n    ******\n";
         else if(life == 0)

@@ -87,10 +87,9 @@ public class HangmanGame
             else
             {
                 System.out.print("_ ");
-                uniqueChar.add(player.getWord().charAt(i - 1));
+                uniqueChar.add(Character.toLowerCase(player.getWord().charAt(i - 1)));
             }  
         }
-        int size = uniqueChar.size();
 
         while(gameDone == false)
         {
@@ -102,7 +101,7 @@ public class HangmanGame
                 if(player.guessLetter(guess))
                 {
                     System.out.println("" + guess + " is in the word");
-                    guessedChar.add(charGuess);
+                    guessedChar.add(Character.toLowerCase(charGuess));
                 }
                 else
                 {
@@ -123,6 +122,9 @@ public class HangmanGame
                 }    
                 didWin = true;
                 gameDone = true;
+
+                for(int i = 0; i < player.getWord().length(); i ++)
+                    guessedChar.add(Character.toLowerCase(player.getWord().charAt(i)));
             }
 
             System.out.println(player);
@@ -130,12 +132,12 @@ public class HangmanGame
             {
                 if(player.getWord().charAt(i) == ' ')    
                     System.out.print("   ");
-                else if(guessedChar.contains(player.getWord().charAt(i)))
+                else if(guessedChar.contains(Character.toLowerCase(player.getWord().charAt(i))))
                     System.out.print(player.getWord().charAt(i));
                 else
                 {
                     System.out.print("_ ");
-                    uniqueChar.add(player.getWord().charAt(i));
+                    uniqueChar.add(Character.toLowerCase(player.getWord().charAt(i)));
                 }  
             }
 
