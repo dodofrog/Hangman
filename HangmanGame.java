@@ -18,18 +18,18 @@ public class HangmanGame
     // Resets the word
     public void resetWord()
     {
-        Scanner wordScan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         Scanner numScan = new Scanner(System.in);
         boolean firstScan = false, secondScan = false;
         while (firstScan == false)
         {
             System.out.println("Would you like to choose your own word? (y/n): ");
-            String userChoice = wordScan.nextLine();
+            String userChoice = scan.nextLine();
             userChoice.toLowerCase();
             if (userChoice.equals("y"))
             {
                 System.out.println("What is your word? ");
-                String userWord = wordScan.nextLine();
+                String userWord = scan.nextLine();
                 player = new Hangman(userWord);
                 firstScan = true;
             }
@@ -65,8 +65,6 @@ public class HangmanGame
                 System.out.println("Invalid Input");
             }
         }
-        wordScan.close();
-        numScan.close();
     }
 
     // plays the game
@@ -150,7 +148,6 @@ public class HangmanGame
                 gameDone = true;
             }
         }
-        scan.close();
         return didWin;
     }
 }
