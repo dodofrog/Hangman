@@ -9,7 +9,11 @@ public class HangmanGame
     // Data Fields
     private Hangman player;
 
-    // No Constructor
+    //Constructor
+    public HangmanGame()
+    {
+        resetWord();
+    }
 
     /**
      * ----------------------------METHODS-------------------------------
@@ -24,13 +28,11 @@ public class HangmanGame
         while (firstScan == false)
         {
             System.out.println("Would you like to choose your own word? (y/n): ");
-            String userChoice = scan.nextLine();
-            userChoice.toLowerCase();
+            String userChoice = scan.nextLine().toLowerCase();
             if (userChoice.equals("y"))
             {
                 System.out.println("What is your word? ");
-                String userWord = scan.nextLine();
-                player = new Hangman(userWord);
+                player = new Hangman(scan.nextLine());
                 firstScan = true;
             }
             else if(userChoice.equals("n"))
@@ -38,52 +40,40 @@ public class HangmanGame
                 while(secondScan == false)
                 {
                     System.out.println("Would you like a word about fruits(1), countries(2), sports(3), or randomly chosen(4)? ");
-                    int userNum = numScan.nextInt();
-                    userNum--;
+                    int userNum = numScan.nextInt() - 1;
                     if (userNum < 0 || userNum > 3)
-                    {
                         System.out.println("Invalid Input");
-                    }
                     else
                     {
                         if(userNum == 3)
-                        {
-                            int rand = (int)Math.random() * 3;
-                            player = new Hangman(rand);
-                        }
+                            player = new Hangman((int) (Math.random() * 3));
                         else
-                        {
                             player = new Hangman(userNum);
-                        }
                         secondScan = true;
                     }
                 }
                 firstScan = true;
             }
             else
-            {
                 System.out.println("Invalid Input");
-            }
         }
     }
 
     // plays the game
     public boolean playGame()
-    {    
-        resetWord();  
+    {     
         Scanner scan = new Scanner(System.in);
         boolean gameDone = false, didWin = false;
+        String playerWord = player.getWord();
         ArrayList<Character> guessedChar = new ArrayList<Character>();
 
         System.out.println(player);
-        for(int i = 0; i < player.getWord().length(); i++)
+        for(int i = 0; i < playerWord.length(); i++)
         {
-            if(player.getWord().charAt(i) == ' ')    
+            if(playerWord.charAt(i) == ' ')    
                 System.out.print("   ");
             else
-            {
                 System.out.print("_ ");
-            }  
         }
 
         while(gameDone == false)
@@ -93,6 +83,7 @@ public class HangmanGame
             if (guess.length() == 1)
             {
                 char charGuess = guess.charAt(0);
+
                 if(player.guessLetter(guess))
                 {
                     System.out.println("\n--===============================--\n" + "'" + guess + "'" + " is in the word");
@@ -109,8 +100,8 @@ public class HangmanGame
                 if(player.guessWord(guess))
                 {
                     System.out.println("\n--===============================--\n" + "'" + guess + "'" + " is the word, you won");
-                    for(int i = 0; i < player.getWord().length(); i ++)
-                    guessedChar.add(Character.toLowerCase(player.getWord().charAt(i)));
+                    for(int i = 0; i < playerWord.length(); i ++)
+                        guessedChar.add(Character.toLowerCase(playerWord.charAt(i)));
                     didWin = true;
                     gameDone = true;
                 }
@@ -122,16 +113,14 @@ public class HangmanGame
             }
 
             System.out.println(player);
-            for(int i = 0; i < player.getWord().length(); i++)
+            for(int i = 0; i < playerWord.length(); i++)
             {
-                if(player.getWord().charAt(i) == ' ')    
+                if(playerWord.charAt(i) == ' ')    
                     System.out.print("   ");
-                else if(guessedChar.contains(Character.toLowerCase(player.getWord().charAt(i))))
-                    System.out.print(player.getWord().charAt(i) + " ");
+                else if(guessedChar.contains(Character.toLowerCase(playerWord.charAt(i))))
+                    System.out.print(playerWord.charAt(i) + " ");
                 else
-                {
                     System.out.print("_ ");
-                }  
             }
 
             if(player.hasGuessedWord(guessedChar))

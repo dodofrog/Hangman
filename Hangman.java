@@ -8,7 +8,7 @@ public class Hangman
     private String word;
     private String[] fruits = {"apple", "banana", "pepper", "tomato", "lychee", "dragonfruit", "pear", "orange", "lemon", "lime", "avocado", "pumpkin", "watermelon", "cucumber", "peaches", "apricots", "strawberry", "lingonberry", "blackberry", "blueberry", "raspberry", "grapes", "cranberry"};
     private String[] countries = {"United States", "Canada", "Mexico", "Brazil", "Colombia", "Argentina", "Ukraine", "Russia", "United Kingdom", "France", "Spain", "Switzerland", "Germany", "Italy", "Greece", "Poland", "Sweden", "Ireland", "India", "China", "Taiwan", "Japan", "Rwanda", "Pakistan"};
-    private String[] sports = {"tennis", "soccer", "football", "badminton", "rugby", "volleyball", "tchoukball", "wrestling", "chess", "cricket", "basketball", "baseball", "ultimate frisbee"};
+    private String[] sports = {"tennis", "soccer", "football", "badminton", "rugby", "volleyball", "tchoukball", "wrestling", "chess", "cricket", "basketball", "baseball", "ultimate frisbee", "field hockey", "ice hockey"};
     private int life = 6;
 
     // Constructors
@@ -31,27 +31,17 @@ public class Hangman
     private void findWord(int answer)
     {
         if(answer == 0)
-        {
-            int rand = (int) (Math.random() * fruits.length);
-            word = fruits[rand];
-        }
+            word = fruits[(int) (Math.random() * fruits.length)];
         else if(answer == 1)
-        {
-            int rand = (int) (Math.random() * countries.length);
-            word = countries[rand];
-        }
+            word = countries[(int) (Math.random() * countries.length)];
         else if(answer == 2)
-        {
-            int rand = (int) (Math.random() * sports.length);
-            word = sports[rand];
-        }
+            word = sports[(int) (Math.random() * sports.length)];
     }
 
     // Determines what the word will be based on user input
     private void findWord(String userWord)
     {
-        userWord.toLowerCase();
-        word = userWord;
+        word = userWord.toLowerCase();
     }
 
     // Takes a life away
@@ -72,21 +62,19 @@ public class Hangman
         boolean didGuess = false;
         int length = word.length();
 
-        // for(int i = 0; i < word.length(); i++)
-        //     if(word.charAt(i) == ' ')
-        //         trueLength--;
-
         for(int i = 0; i < length; i++)
         {
-            if(word.charAt(i) == ' ')
-                length = length;
-            else if(guess.contains(word.charAt(i)))
-                didGuess = true;
-            else
+            if(word.charAt(i) != ' ')
             {
-                didGuess = false;
-                i = word.length();
+                if(guess.contains(word.charAt(i)))
+                    didGuess = true;
+                else
+                {
+                    didGuess = false;
+                    i = word.length();
+                }
             }
+            
         }
         return didGuess;
     }
@@ -95,8 +83,7 @@ public class Hangman
     public boolean guessWord(String wordGuess)
     {
         boolean didGuess = false;
-        wordGuess.toLowerCase();
-        if (wordGuess.equals(word.toLowerCase()))
+        if (wordGuess.toLowerCase().equals(word.toLowerCase()))
             didGuess = true;
         else
             return didGuess;
@@ -107,8 +94,7 @@ public class Hangman
     public boolean guessLetter(String letter)
     {
         boolean didGuess = false;
-        letter.toLowerCase();
-        if (word.indexOf(letter) != -1)
+        if (word.toLowerCase().indexOf(letter.toLowerCase()) != -1)
             didGuess = true;
         else
             return didGuess;
