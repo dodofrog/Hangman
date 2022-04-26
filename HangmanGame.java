@@ -9,11 +9,7 @@ public class HangmanGame
     // Data Fields
     private Hangman player;
 
-    // Constructor
-    public HangmanGame()
-    {
-        resetWord();
-    }
+    // No Constructor
 
     /**
      * ----------------------------METHODS-------------------------------
@@ -22,18 +18,18 @@ public class HangmanGame
     // Resets the word
     public void resetWord()
     {
-        Scanner scan = new Scanner(System.in);
+        Scanner wordScan = new Scanner(System.in);
         Scanner numScan = new Scanner(System.in);
         boolean firstScan = false, secondScan = false;
         while (firstScan == false)
         {
             System.out.println("Would you like to choose your own word? (y/n): ");
-            String userChoice = scan.nextLine();
+            String userChoice = wordScan.nextLine();
             userChoice.toLowerCase();
             if (userChoice.equals("y"))
             {
                 System.out.println("What is your word? ");
-                String userWord = scan.nextLine();
+                String userWord = wordScan.nextLine();
                 player = new Hangman(userWord);
                 firstScan = true;
             }
@@ -69,25 +65,26 @@ public class HangmanGame
                 System.out.println("Invalid Input");
             }
         }
+        wordScan.close();
+        numScan.close();
     }
 
     // plays the game
     public boolean playGame()
-    {      
+    {    
+        resetWord();  
         Scanner scan = new Scanner(System.in);
         boolean gameDone = false, didWin = false;
-        ArrayList<Character> uniqueChar = new ArrayList<Character>();
         ArrayList<Character> guessedChar = new ArrayList<Character>();
 
         System.out.println(player);
-        for(int i = player.getWord().length(); i > 0; i--)
+        for(int i = 0; i < player.getWord().length(); i++)
         {
-            if(player.getWord().charAt(i - 1) == ' ')    
+            if(player.getWord().charAt(i) == ' ')    
                 System.out.print("   ");
             else
             {
                 System.out.print("_ ");
-                uniqueChar.add(Character.toLowerCase(player.getWord().charAt(i - 1)));
             }  
         }
 
@@ -114,6 +111,8 @@ public class HangmanGame
                 if(player.guessWord(guess))
                 {
                     System.out.println("\n--===============================--\n" + "'" + guess + "'" + " is the word, you won");
+                    for(int i = 0; i < player.getWord().length(); i ++)
+                    guessedChar.add(Character.toLowerCase(player.getWord().charAt(i)));
                     didWin = true;
                     gameDone = true;
                 }
@@ -122,9 +121,6 @@ public class HangmanGame
                     System.out.println("\n--===============================--\n" + "'" + guess + "'" + " is not the word");
                     player.takeLife();
                 }
-
-                for(int i = 0; i < player.getWord().length(); i ++)
-                    guessedChar.add(Character.toLowerCase(player.getWord().charAt(i)));
             }
 
             System.out.println(player);
@@ -137,7 +133,6 @@ public class HangmanGame
                 else
                 {
                     System.out.print("_ ");
-                    uniqueChar.add(Character.toLowerCase(player.getWord().charAt(i)));
                 }  
             }
 
@@ -155,6 +150,7 @@ public class HangmanGame
                 gameDone = true;
             }
         }
+        scan.close();
         return didWin;
     }
 }

@@ -1,6 +1,6 @@
 // HangmanRunner.java - The driver class to use the HangmanGame object and play hangman.
 // A.Garg
- // March 2022
+// March 2022
 
  public class HangmanRunner
  {

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Hangman
 {
     private String word;
-    private String[] fruits = {"apple", "banana", "pepper", "tomato", "lychee", "dragonfruit", "pear", "orange", "lemon", "lime", "avocado", "pumpkin", "watermelon", "cucumber", "peaches", "apricots", "strawberry", "lingonberry", "blackberry", "blueberry", "raspberries", "grapes", "cranberries"};
+    private String[] fruits = {"apple", "banana", "pepper", "tomato", "lychee", "dragonfruit", "pear", "orange", "lemon", "lime", "avocado", "pumpkin", "watermelon", "cucumber", "peaches", "apricots", "strawberry", "lingonberry", "blackberry", "blueberry", "raspberry", "grapes", "cranberry"};
     private String[] countries = {"United States", "Canada", "Mexico", "Brazil", "Colombia", "Argentina", "Ukraine", "Russia", "United Kingdom", "France", "Spain", "Switzerland", "Germany", "Italy", "Greece", "Poland", "Sweden", "Ireland", "India", "China", "Taiwan", "Japan", "Rwanda", "Pakistan"};
-    private String[] sports = {"Tennis", "Soccer", "Football", "Badminton", "Rugby", "volleyball", "Tchoukball", "Wrestling", "Chess", "Cricket", "Basketball", "Baseball", "Ultimate Frisbee"};
+    private String[] sports = {"tennis", "soccer", "football", "badminton", "rugby", "volleyball", "tchoukball", "wrestling", "chess", "cricket", "basketball", "baseball", "ultimate frisbee"};
     private int life = 6;
 
     // Constructors
@@ -70,9 +70,17 @@ public class Hangman
     public boolean hasGuessedWord(ArrayList<Character> guess)
     {
         boolean didGuess = false;
-        for(int i = 0; i < word.length(); i++)
+        int length = word.length();
+
+        // for(int i = 0; i < word.length(); i++)
+        //     if(word.charAt(i) == ' ')
+        //         trueLength--;
+
+        for(int i = 0; i < length; i++)
         {
-            if(guess.contains(word.charAt(i)))
+            if(word.charAt(i) == ' ')
+                length = length;
+            else if(guess.contains(word.charAt(i)))
                 didGuess = true;
             else
             {
@@ -118,19 +126,19 @@ public class Hangman
     {
         String result = "";
         if (life == 6)
-            result = "   +----+ \n   |    | \n        | \n        | \n        | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n        | \n        | \n        | \n        | \n        | \n     *****\n    *******\n";
         else if(life == 5)
-            result = "   +----+ \n   |    | \n   0    | \n        | \n        | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n        | \n        | \n        | \n        | \n     *****\n    *******\n";
         else if(life == 4)
-            result = "   +----+ \n   |    | \n   0    | \n   |    | \n   |    | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n   |    | \n   |    | \n        | \n        | \n     *****\n    *******\n";
         else if(life == 3)
-            result = "   +----+ \n   |    | \n   0    | \n  /|    | \n        | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n  /|    | \n        | \n        | \n        | \n     *****\n    *******\n";
         else if(life == 2)
-            result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n        | \n        | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n        | \n        | \n        | \n     *****\n    *******\n";
         else if(life == 1)
-            result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  /     | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  /     | \n        | \n     *****\n    *******\n";
         else if(life == 0)
-            result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n     *****\n    ******\n";
+            result = "   +----+ \n   |    | \n   0    | \n  /|\\   | \n   |    | \n  / \\   | \n        | \n     *****\n    *******\n";
         return result;
     }
 }
