@@ -14,7 +14,7 @@
 				+ 		   "HHHHH    HHHHH  AAA    AAA  NNNN    NNNNN  GGG      GG  MMMM     MMMM  AAA    AAA  NNNN    NNNNN\n"
 				+ 		   "HHHHH    HHHHH  AAA    AAA  NNNN     NNNN  GGGGGGGGGGG  MMMM     MMMM  AAA    AAA  NNNN     NNNN\n"
 				+ 		   "HHHHH    HHHHH  AAA    AAA  NNNN     NNNN  GGGGGGGGGGG  MMMM     MMMM  AAA    AAA  NNNN     NNNN\n");
-		System.out.println("\nThe Rules are Simple: \n- Guess the word letter by letter(spaces matter)\n- If you get a letter wrong, the man gains a limb\n- You lose when the man is fully hung\n");
+		System.out.println("\nThe Rules are Simple: \n- Guess the word letter by letter(spaces don't matter) or go for the full word(spaces matter)\n- If you get a letter or word wrong, the figure gains a limb\n- You lose when the figure is fully hung\n");
         HangmanGame game = new HangmanGame();
 		game.playGame();
      }

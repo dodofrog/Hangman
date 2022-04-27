@@ -82,7 +82,7 @@ public class HangmanGame
             String guess = scan.nextLine();
             if (guess.length() == 1)
             {
-                char charGuess = guess.charAt(0);
+                char charGuess = Character.toLowerCase(guess.charAt(0));
 
                 if(player.guessLetter(guess))
                 {
@@ -92,7 +92,8 @@ public class HangmanGame
                 else
                 {
                     System.out.println("\n--===============================--\n" + "'" + guess + "'" + " is not in the word");
-                    incorrectGuesses.add(charGuess);                  
+                    if(!(incorrectGuesses.contains(charGuess)))
+                        incorrectGuesses.add(charGuess);                  
                     player.takeLife();
                 }    
             }

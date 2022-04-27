@@ -116,7 +116,7 @@ public class Hangman
         else if(life == 5)
             result = "   +----+ \n   |    | \n   0    | \n        | \n        | \n        | \n        | \n     *****\n    *******\n";
         else if(life == 4)
-            result = "   +----+ \n   |    | \n   0    | \n   |    | \n   |    | \n        | \n        | \n     *****\n    *******\n";
+            result = "   +----+ \n   |    | \n   0    | \n   |    | \n        | \n        | \n        | \n     *****\n    *******\n";
         else if(life == 3)
             result = "   +----+ \n   |    | \n   0    | \n  /|    | \n        | \n        | \n        | \n     *****\n    *******\n";
         else if(life == 2)
