@@ -41,7 +41,7 @@ public class Hangman
     // Determines what the word will be based on user input
     private void findWord(String userWord)
     {
-        word = userWord.toLowerCase();
+        word = userWord;
     }
 
     // Takes a life away
@@ -66,7 +66,7 @@ public class Hangman
         {
             if(word.charAt(i) != ' ')
             {
-                if(guess.contains(word.charAt(i)))
+                if(guess.contains(Character.toLowerCase(word.charAt(i))))
                     didGuess = true;
                 else
                 {

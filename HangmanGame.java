@@ -65,7 +65,7 @@ public class HangmanGame
         Scanner scan = new Scanner(System.in);
         boolean gameDone = false, didWin = false;
         String playerWord = player.getWord();
-        ArrayList<Character> guessedChar = new ArrayList<Character>();
+        ArrayList<Character> guessedChar = new ArrayList<Character>(), incorrectGuesses = new ArrayList<Character>();
 
         System.out.println(player);
         for(int i = 0; i < playerWord.length(); i++)
@@ -92,6 +92,7 @@ public class HangmanGame
                 else
                 {
                     System.out.println("\n--===============================--\n" + "'" + guess + "'" + " is not in the word");
+                    incorrectGuesses.add(charGuess);                  
                     player.takeLife();
                 }    
             }
@@ -99,7 +100,7 @@ public class HangmanGame
             {
                 if(player.guessWord(guess))
                 {
-                    System.out.println("\n--===============================--\n" + "'" + guess + "'" + " is the word, you won");
+                    System.out.println("\n--===============================--\n" + "'" + guess + "'" + " is the word");
                     for(int i = 0; i < playerWord.length(); i ++)
                         guessedChar.add(Character.toLowerCase(playerWord.charAt(i)));
                     didWin = true;
@@ -111,6 +112,16 @@ public class HangmanGame
                     player.takeLife();
                 }
             }
+
+            System.out.println("\nIncorrect Guesses: ");
+            for(int i = 0; i < incorrectGuesses.size(); i++)
+            {
+                if(i != incorrectGuesses.size() - 1)
+                    System.out.print(incorrectGuesses.get(i) + ", ");
+                else
+                    System.out.println(incorrectGuesses.get(i));
+            }  
+            System.out.println();
 
             System.out.println(player);
             for(int i = 0; i < playerWord.length(); i++)
@@ -125,16 +136,22 @@ public class HangmanGame
 
             if(player.hasGuessedWord(guessedChar))
             {
-                System.out.println("\nYOU WON!!\n\nLives Left: " + player.getLife());
-                didWin = true;
                 gameDone = true;
+                didWin = true;
             }
 
             if(player.getLife() == 0)
             {
-                System.out.println("\nYOU LOST\nThe Word Was: " + player.getWord());
-                didWin = false;
                 gameDone = true;
+                didWin = false;
+            }
+
+            if(gameDone == true)
+            {
+                if(didWin == true)
+                    System.out.println("\nYOU WON!!\n\nLives Left: " + player.getLife());
+                else   
+                    System.out.println("\nYOU LOST\nThe Word Was: " + player.getWord());
             }
         }
         return didWin;
