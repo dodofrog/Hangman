@@ -8,7 +8,7 @@ public class Hangman
     private String word;
     private String[] fruits = {"apple", "banana", "pepper", "tomato", "lychee", "dragonfruit", "pear", "orange", "lemon", "lime", "avocado", "pumpkin", "watermelon", "cucumber", "peaches", "apricots", "strawberry", "lingonberry", "blackberry", "blueberry", "raspberry", "grapes", "cranberry"};
     private String[] countries = {"United States", "Canada", "Mexico", "Brazil", "Colombia", "Argentina", "Ukraine", "Russia", "United Kingdom", "France", "Spain", "Switzerland", "Germany", "Italy", "Greece", "Poland", "Sweden", "Ireland", "India", "China", "Taiwan", "Japan", "Rwanda", "Pakistan"};
-    private String[] sports = {"tennis", "soccer", "football", "badminton", "rugby", "volleyball", "tchoukball", "wrestling", "chess", "cricket", "basketball", "baseball", "ultimate frisbee", "field hockey", "ice hockey"};
+    private String[] sports = {"tennis", "soccer", "football", "badminton", "rugby", "volleyball", "tchoukball", "wrestling", "chess", "cricket", "basketball", "baseball", "ultimate frisbee", "field hockey", "ice hockey", "water skiing", "snoboarding", "paddleboarding", "skiing", "pole vaulting", "track and field"};
     private int life = 6;
 
     // Constructors

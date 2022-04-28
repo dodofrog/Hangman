@@ -8,6 +8,8 @@ public class HangmanGame
 {
     // Data Fields
     private Hangman player;
+    private Scanner scan = new Scanner(System.in);
+    private Scanner numScan = new Scanner(System.in);
 
     //Constructor
     public HangmanGame()
@@ -22,8 +24,6 @@ public class HangmanGame
     // Resets the word
     public void resetWord()
     {
-        Scanner scan = new Scanner(System.in);
-        Scanner numScan = new Scanner(System.in);
         boolean firstScan = false, secondScan = false;
         while (firstScan == false)
         {
@@ -62,7 +62,6 @@ public class HangmanGame
     // plays the game
     public boolean playGame()
     {     
-        Scanner scan = new Scanner(System.in);
         boolean gameDone = false, didWin = false;
         String playerWord = player.getWord();
         ArrayList<Character> guessedChar = new ArrayList<Character>(), incorrectGuesses = new ArrayList<Character>();
@@ -156,5 +155,12 @@ public class HangmanGame
             }
         }
         return didWin;
+    }
+
+    // Closes the Scanners - Do after game is done
+    public void endGame()
+    {
+        scan.close();
+        numScan.close();
     }
 }

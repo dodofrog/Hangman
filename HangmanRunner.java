@@ -17,5 +17,6 @@
 		System.out.println("\nThe Rules are Simple: \n- Guess the word letter by letter(spaces don't matter) or go for the full word(spaces matter)\n- If you get a letter or word wrong, the figure gains a limb\n- You lose when the figure is fully hung\n");
         HangmanGame game = new HangmanGame();
 		game.playGame();
+		game.endGame();
      }
  }
